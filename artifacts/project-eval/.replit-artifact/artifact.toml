@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Project Evaluation Platform"
+version = "1.0.0"
+id = "artifacts/project-eval"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25107
+
+[services.development]
+run = "pnpm --filter @workspace/project-eval run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/project-eval", "run", "build" ]
+publicDir = "artifacts/project-eval/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25107"
+BASE_PATH = "/"

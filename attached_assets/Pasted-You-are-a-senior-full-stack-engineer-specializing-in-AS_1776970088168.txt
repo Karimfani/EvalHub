@@ -1,0 +1,235 @@
+You are a senior full-stack engineer specializing in ASP.NET and Angular.
+
+Build a production-ready full-stack web application for a "Project Evaluation Platform".
+
+The platform allows users to submit projects, vote on them, and includes authentication, roles, payments, and an admin dashboard.
+
+---
+
+## 🧱 Tech Stack (STRICT REQUIREMENT)
+
+Backend:
+- ASP.NET Core Web API (.NET 8)
+- Entity Framework Core
+- SQL Server
+- JWT Authentication
+
+Frontend:
+- Angular (latest stable version, NOT AngularJS legacy)
+- TypeScript
+- Angular Material or TailwindCSS
+
+---
+
+## 🎯 Core Features
+
+### 1. Authentication & Roles (CRITICAL)
+- Register / Login system
+- JWT-based authentication
+- Roles:
+  - Admin
+  - User
+- Role-based authorization
+
+Users can:
+- Register
+- Login
+- Submit projects
+- Vote
+
+Admins can:
+- Manage users
+- Approve/reject projects
+- View analytics
+
+---
+
+### 2. Project System
+
+Each project has:
+- Title
+- Description
+- Category
+- Image (optional)
+- Owner (User)
+- Status (Pending / Approved / Rejected)
+- CreatedAt
+
+Users can:
+- Create project
+- View projects
+- Only approved projects are public
+
+---
+
+### 3. Voting System
+
+- Each user can vote ONCE per project
+- Store votes in DB
+- Show total votes per project
+- Prevent duplicate voting
+
+---
+
+### 4. Payment Integration
+
+- Use Stripe (test mode)
+- Users can:
+  - Pay to "feature" their project
+- Add:
+  - Stripe checkout session
+  - Webhook handling
+
+Feature logic:
+- Featured projects appear first
+
+---
+
+### 5. Admin Dashboard
+
+Admin panel must include:
+
+- List all users
+- List all projects
+- Approve / reject projects
+- View payments
+- View total votes
+
+---
+
+## 🧩 Database Design
+
+Create entities:
+
+User:
+- Id
+- Email
+- PasswordHash
+- Role
+
+Project:
+- Id
+- Title
+- Description
+- Category
+- Status
+- UserId
+- CreatedAt
+- IsFeatured
+
+Vote:
+- Id
+- UserId
+- ProjectId
+
+Payment:
+- Id
+- UserId
+- ProjectId
+- Amount
+- Status
+
+---
+
+## 🔌 API Endpoints
+
+Auth:
+- POST /api/auth/register
+- POST /api/auth/login
+
+Projects:
+- GET /api/projects
+- POST /api/projects
+- PUT /api/projects/{id}/approve (Admin)
+- PUT /api/projects/{id}/reject (Admin)
+
+Voting:
+- POST /api/projects/{id}/vote
+
+Payments:
+- POST /api/payments/create-checkout-session
+- POST /api/payments/webhook
+
+Admin:
+- GET /api/admin/users
+- GET /api/admin/projects
+- GET /api/admin/analytics
+
+---
+
+## 🎨 Frontend Pages
+
+- Login Page
+- Register Page
+- Project List Page
+- Project Details Page
+- Submit Project Page
+- Admin Dashboard
+
+---
+
+## 🧠 UI Requirements
+
+- Clean modern UI
+- Responsive
+- Loading states
+- Error handling
+- Toast notifications
+
+---
+
+## 🔐 Security
+
+- Hash passwords (ASP.NET Identity or BCrypt)
+- Secure JWT tokens
+- Protect admin routes
+
+---
+
+## ⚙️ Extra Features
+
+- Pagination for projects
+- Search & filter
+- Sorting by votes
+- Basic analytics (total users, projects, votes)
+
+---
+
+## 🚀 Deployment Ready
+
+- Environment variables
+- CORS configured
+- Docker support (optional)
+
+---
+
+## 📘 README.md
+
+Write a professional README including:
+- Overview
+- Features
+- Tech stack
+- Setup instructions
+- API documentation
+- Screenshots placeholders
+
+---
+
+## ❗ Important
+
+- Code must be clean and modular
+- Use best practices (Services, Repositories)
+- No dummy shortcuts
+- Must run locally without errors
+
+---
+
+## 🧩 Final Output
+
+- Full backend + frontend code
+- Connected and working
+- Ready for GitHub deployment
+
+---
+
+Act like you're building a real startup product.
